@@ -20,6 +20,8 @@ running in a hosted environment.
 $ docker build -t hello .
 ...
 
+$ docker run --name server_jwt_docker --env-file file.env -d -p 4322:8080 server_jwt --target getToken
+$ docker run --name jwt_docker -e SECRET_PASSWORD=12456 -e PORT=8081 -d -p 65111:8081 jwt_dart
 $ docker run -it -p 8080:8080 --name app hello
 Listening on :8080
 ```
