@@ -11,6 +11,7 @@ dependencies:
   dart_jsonwebtoken: ^2.2.0
   dartz: ^0.10.0-nullsafety.2
   functions_framework: ^0.4.0
+  mocktail: ^0.1.4
   shelf: ^1.0.0
 
 dev_dependencies:
