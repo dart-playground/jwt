@@ -1,5 +1,5 @@
 import 'package:dart_jwt/core/error/failure.dart';
-import 'package:dart_jwt/core/text/token.dart';
+import '../../utils/token.dart';
 import 'package:dart_jwt/token/infrastructure/repository/validate_token_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:test/test.dart';
