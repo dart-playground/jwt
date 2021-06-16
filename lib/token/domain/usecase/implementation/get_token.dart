@@ -9,7 +9,7 @@ class GetToken extends IGetToken {
   GetToken({required this.repository});
 
   @override
-  Future<Either<Failure, String>> call(Map<String, String> param) async {
+  Future<Either<Failure, String>> call(Map<String, dynamic> param) async {
     return await repository.getToken(param);
   }
 }

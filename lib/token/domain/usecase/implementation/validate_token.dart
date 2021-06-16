@@ -9,7 +9,7 @@ class ValidateToken extends IValidateToken {
   ValidateToken({required this.repository});
 
   @override
-  Future<Either<Failure, Map<String, dynamic>>> call([void param]) {
-    return repository.validateToken();
+  Future<Either<Failure, Map<String, dynamic>>> call(String param) {
+    return repository.validateToken(param);
   }
 }
