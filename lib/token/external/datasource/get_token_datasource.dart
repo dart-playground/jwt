@@ -16,7 +16,7 @@ class GetTokenDataSource extends IGetTokenDataSource {
           'loc': 'euw-2',
         },
       },
-      issuer: 'https://github.com/jonasroussel/jsonwebtoken',
+      issuer: 'https://github.com/phferreira/dart_jwt',
     );
 
     token = jwt.sign(
