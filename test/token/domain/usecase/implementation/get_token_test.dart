@@ -8,7 +8,7 @@ import 'package:test/test.dart';
 
 class GetTokenRepositoryMock extends Mock implements IGetTokenRepository {}
 
-main() {
+void main() {
   final repository = GetTokenRepositoryMock();
   final usecase = GetToken(repository: repository);
 

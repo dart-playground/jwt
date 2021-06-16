@@ -8,7 +8,7 @@ import 'package:test/test.dart';
 
 class GetTokenDataSourceMock extends Mock implements IGetTokenDataSource {}
 
-main() {
+void main() {
   final datasource = GetTokenDataSourceMock();
   final repository = GetTokenRepository(datasource: datasource);
 
