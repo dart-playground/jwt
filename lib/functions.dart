@@ -1,5 +1,34 @@
+import 'dart:convert';
+
+import 'package:dart_jwt/token/domain/repository/validate_token_repository.dart';
+import 'package:dart_jwt/token/domain/usecase/get_token.dart';
+import 'package:dart_jwt/token/domain/usecase/implementation/get_token.dart';
+import 'package:dart_jwt/token/domain/usecase/implementation/validate_token.dart';
+import 'package:dart_jwt/token/domain/usecase/validate_token.dart';
+import 'package:dart_jwt/token/external/datasource/get_token_datasource.dart';
+import 'package:dart_jwt/token/infrastructure/repository/get_token_repository.dart';
 import 'package:functions_framework/functions_framework.dart';
 import 'package:shelf/shelf.dart';
+import 'token/infrastructure/repository/validate_token_repository.dart';
 
 @CloudFunction()
-Response function(Request request) => Response.ok('Hello, World!');
+Future<Response> function(Request request) async {
+  IValidateTokenRepository repository = ValidateTokenRepository();
+  IValidateToken validateToken = ValidateToken(repository: repository);
+  var result = await validateToken(request.headers['Authorization']!.split(' ')[1]);
+
+  return result.fold((l) => Response.forbidden(l.message), (r) => Response.ok(r.toString()));
+}
+
+@CloudFunction()
+Future<Response> getToken(Request request) async {
+  IGetToken usecase = GetToken(repository: GetTokenRepository(datasource: GetTokenDataSource()));
+  var map = <String, dynamic>{};
+  Map jsonMap = jsonDecode('requestTest');
+
+  jsonMap.forEach((key, value) {
+    map[key] = value.toString();
+  });
+  var result = await usecase(map);
+  return result.fold((l) => Response.forbidden(l.message), (r) => Response.ok(r));
+}
