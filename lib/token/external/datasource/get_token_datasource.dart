@@ -10,7 +10,8 @@ class GetTokenDataSource extends IGetTokenDataSource {
 
     final jwt = JWT(
       {
-        'id': 123,
+        'id': param['id'],
+        'role': param['role'],
         'server': {
           'id': '3e4fc296',
           'loc': 'euw-2',
