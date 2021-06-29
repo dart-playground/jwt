@@ -23,6 +23,6 @@ Future<Response> function(Request request) async {
 @CloudFunction()
 Future<Response> getToken(Request request) async {
   IGetToken usecase = GetToken(repository: GetTokenRepository(datasource: GetTokenDataSource()));
-  var result = await usecase(jsonDecode(await request.readAsString()));
+  var result = await usecase(jsonDecode(utf8.decode(base64Decode(await request.readAsString()))));
   return result.fold((l) => Response.forbidden(l.message), (r) => Response.ok(r));
 }
